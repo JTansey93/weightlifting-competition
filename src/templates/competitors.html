@@ -1,0 +1,6 @@
+{% extends 'base.html' %}
+{% block content %}
+{% for object in objects %}
+<p>Name: {{ object.name }}, Date of Birth: {{ object.dateOfBirth }}, Bodyweight: {{ object.bodyweight }}</p>
+{% endfor %}
+{% endblock %}
