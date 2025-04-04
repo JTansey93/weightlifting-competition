@@ -4,7 +4,7 @@ from .forms import CompetitorForm
 
 
 # Create your views here.
-def home_view(request, *args, **kwargs):
+def add_competitor_view(request, *args, **kwargs):
     form = CompetitorForm()
     if request.method == "POST":
         form = CompetitorForm(request.POST)
@@ -13,11 +13,11 @@ def home_view(request, *args, **kwargs):
     context = {
         "form": form
     }
-    return render(request, "home.html", context)
+    return render(request, "addcompetitors.html", context)
 
-def competitors_view(request, *args, **kwargs):
+def view_competitors_view(request, *args, **kwargs):
     obj = Competitor.objects.all()
     context = {
         "objects": obj
     }
-    return render(request, 'competitors.html', context)
+    return render(request, "viewcompetitors.html", context)
