@@ -1,1 +1,4 @@
-/weightlifting_competition/__pycache__
+/env
+db.sqlite3
+__pycache__
+.env
