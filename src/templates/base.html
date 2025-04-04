@@ -1,10 +1,19 @@
 <!DOCTYPE html>
 <html>
+{% load static %}
+<link rel="stylesheet" href="{% static 'bootstrap.min.css' %}">
 <head>
     <title></title>
 </head>
 <body>
-    <h1>This is from the base.html</h1>
+    <div class="container">
+        <header class="d-flex justify-content-center py-3">
+          <ul class="nav nav-pills">
+            <li class="nav-item"><a href="viewcompetitors" class="nav-link">View</a></li>
+            <li class="nav-item"><a href="addcompetitors" class="nav-link">Add</a></li>
+          </ul>
+        </header>
+      </div>
     {% block content %}
     {% endblock %}
 </body>
