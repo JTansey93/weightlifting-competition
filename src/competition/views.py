@@ -26,6 +26,8 @@ def view_competitors_view(request, *args, **kwargs):
     return render(request, "viewcompetitors.html", context)
 
 def competition_view(request):
+    if request.method == "POST":
+        print(request.body)
     obj = Competitor.objects.all()
     context = {
         "objects": obj

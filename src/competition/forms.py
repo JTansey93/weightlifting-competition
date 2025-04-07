@@ -28,4 +28,3 @@ class CompetitorForm(forms.ModelForm):
             'cnj_attempt_1': 'Opening Clean & Jerk'
         }
     
-    
