@@ -1,15 +1,16 @@
 {% extends 'base.html' %}
 {% block content %}
 <h2>View Competitors</h2>
-<table style="width:100%">
-    <tr>
-        <th>Name</th>
-        <th>Date of Birth</th>
-        <th>Bodyweight</th>
-        <th>Opening Snatch</th>
-        <th>Opening Clean and Jerk</th>
-    </tr>
-
+<table class="table" style="width:100%">
+    <thead class="table-primary">
+        <tr>
+            <th>Name</th>
+            <th>Date of Birth</th>
+            <th>Bodyweight</th>
+            <th>Opening Snatch</th>
+            <th>Opening Clean and Jerk</th>
+        </tr>
+    </thead>
     {% for object in objects %}
     <tr>
         <td>{{ object.name }}</td>
@@ -17,6 +18,13 @@
         <td>{{ object.bodyweight }}</td>
         <td>{{ object.snatch_attempt_1 }}</td>
         <td>{{ object.cnj_attempt_1 }}</td>
+        <td>
+            <form action="" method="POST">
+                {% csrf_token %}
+                <input type="hidden" value="{{ object.pk }}" name="pk">
+                <input class="btn btn-default btn-danger" name="delete" type="submit" value="Delete"/>
+              </form>
+        </td>
     </tr>
     {% endfor %}
 </table>

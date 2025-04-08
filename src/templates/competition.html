@@ -1,34 +1,117 @@
 {% extends 'base.html' %}
 {% block content %}
 <h2>Competition</h2>
-<table style="width:100%">
-<tr>
-    <th>Name</th>
-    <th>Date of Birth</th>
-    <th>Bodyweight</th>
-    <th>Snatch 1</th>
-    <th>Snatch 2</th>
-    <th>Snatch 3</th>
-    <th>CnJ 1</th>
-    <th>CnJ 2</th>
-    <th>CnJ 3</th>
-    <th>Total</th>
-    <th>Sinclair</th>
-    <th>Position</th>
-</tr>
-{% for object in objects %}
+<table class="table table-striped">
+    <thead class="table-primary">
+        <tr>
+            <th scope="col">Name</th>
+            <th scope="col">Date of Birth</th>
+            <th scope="col">Bodyweight</th>
+            <th scope="col">Snatch 1</th>
+            <th scope="col">Snatch 2</th>
+            <th scope="col">Snatch 3</th>
+            <th scope="col">CnJ 1</th>
+            <th scope="col">CnJ 2</th>
+            <th scope="col">CnJ 3</th>
+            <th scope="col">Total</th>
+            <th scope="col">Sinclair</th>
+            <th scope="col">Position</th>
+        </tr>
+    </thead>
+<tbody>
+    {% for object in objects %}
     <tr>
         <td>{{ object.name }}</td>
         <td>{{ object.date_of_birth }}</td>
         <td>{{ object.bodyweight }}</td>
         <td>{{ object.snatch_attempt_1 }}</td>
-        <td>{{ object.snatch_attempt_2 }}</td>
-        <td>{{ object.snatch_attempt_3 }}</td>
+        <td>
+            {% if object.snatch_attempt_2 %}
+            {{ object.snatch_attempt_2 }}
+            {% else %}
+            -
+            {% endif %}
+        </td>
+        <td>
+            {% if object.snatch_attempt_3 %}
+            {{ object.snatch_attempt_3 }}
+            {% else %}
+            -
+            {% endif %}
+        </td>
         <td>{{ object.cnj_attempt_1 }}</td>
-        <td>{{ object.cnj_attempt_2 }}</td>
-        <td>{{ object.cnj_attempt_3 }}</td>
-        <td>{{ object.total }}</td>
-        <td>{{ object.sinclair }}</td>
+        <td>
+            {% if object.cnj_attempt_2 %}
+            {{ object.cnj_attempt_2 }}
+            {% else %}
+            -
+            {% endif %}
+        </td>
+        <td>
+            {% if object.cnj_attempt_3 %}
+            {{ object.cnj_attempt_3 }}
+            {% else %}
+            -
+            {% endif %}
+        </td>
+        <td>
+            {% if object.total %}
+            {{ object.total }}
+            {% else %}
+            -
+            {% endif %}
+        </td>
+        <td>
+            {% if object.sinclair %}
+            {{ object.sinclair }}
+            {% else %}
+            -
+            {% endif %}
+        </td>
+        <td>
+            {% if object.position %}
+            {{ object.position }}
+            {% else %}
+            -
+            {% endif %}
+        </td>
     </tr>
     {% endfor %}
+</tbody>
+</table>
+
+<h3>Update</h3>
+<form method="POST">
+    {% csrf_token %}
+    <label for="competitor-name">Competitor Name:</label>
+    <input list="namelist" id="competitor-name" name="competitor-name" />
+    <datalist id="namelist">
+        {% for object in objects %}
+        <option value="{{ object.name }}">
+        {% endfor %}
+    </datalist>
+    <label for="lift">Lift:</label>
+    <input list="liftlist" id="lift" name="lift" />
+    <datalist id="liftlist">
+        <option value="Snatch">
+        <option value="Clean and Jerk">
+    </datalist>
+    <label for="attempt-no">Attempt Number:</label>
+    <input list="attempt-nolist" id="attempt-no" name="attempt-no"/>
+    <datalist id="attempt-nolist">
+        <option value="1">
+        <option value="2">
+        <option value="3">
+    </datalist>
+    <label for="weight">Weight:</label>
+    <input type="number" id="weight" name="weight" />
+    <label for="miss-make">Make:</label>
+    <input list="miss-makelist" id="miss-make" name="miss-make" />
+    <datalist id="miss-makelist">
+        <option value="Make">
+        <option value="Miss">
+    </datalist>
+    <button type="submit">Update</button>
+</form>
+
 {% endblock %}
