@@ -68,7 +68,13 @@
             -
             {% endif %}
         </td>
-        <td></td>
+        <td>
+            {% if object.position %}
+            {{ object.position }}
+            {% else %}
+            -
+            {% endif %}
+        </td>
     </tr>
     {% endfor %}
 </tbody>

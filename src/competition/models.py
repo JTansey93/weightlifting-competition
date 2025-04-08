@@ -13,6 +13,8 @@ class Competitor(models.Model):
     )
     gender = models.CharField(max_length=1, choices=GENDER_CHOICES)
 
+    #There's probably a way of refactoring to make this nicer using JSONField but this was a first pass
+
     snatch_attempt_1 = models.IntegerField()
     snatch_attempt_1_make = models.BooleanField(null=True, blank=True)
     snatch_attempt_2 = models.IntegerField(null=True, blank=True)
@@ -27,8 +29,11 @@ class Competitor(models.Model):
     cnj_attempt_3 = models.IntegerField(null=True, blank=True)
     cnj_attempt_3_make = models.BooleanField(null=True, blank=True)
 
+    position = models.IntegerField(null=True, blank=True)
+
     @property
     def weight_class(self):
+        #This info isn't actually used anywhere in the application yet but will be useful later
         M_WEIGHT_CLASSES = [55, 61, 67, 73, 81, 89, 96, 102]
         F_WEIGHT_CLASSES = [48, 53, 58, 63, 69, 77, 86]
         if self.gender == "M":
