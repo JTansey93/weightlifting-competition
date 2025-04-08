@@ -84,33 +84,29 @@
 <form method="POST">
     {% csrf_token %}
     <label for="competitor-name">Competitor Name:</label>
-    <input list="namelist" id="competitor-name" name="competitor-name" />
-    <datalist id="namelist">
+    <select name="competitor-name" id="namelist">
         {% for object in objects %}
-        <option value="{{ object.name }}">
+        <option value="{{ object.name }}">{{ object.name }}</option>
         {% endfor %}
-    </datalist>
+    </select>
     <label for="lift">Lift:</label>
-    <input list="liftlist" id="lift" name="lift" />
-    <datalist id="liftlist">
-        <option value="Snatch">
-        <option value="Clean and Jerk">
-    </datalist>
+    <select name="lift" id="liftlist">
+        <option value="Snatch">Snatch</option>
+        <option value="Clean and Jerk">Clean and Jerk</option>
+        </select>
     <label for="attempt-no">Attempt Number:</label>
-    <input list="attempt-nolist" id="attempt-no" name="attempt-no"/>
-    <datalist id="attempt-nolist">
-        <option value="1">
-        <option value="2">
-        <option value="3">
-    </datalist>
+    <select name="attempt-no" id="attempt-nolist">
+        <option value="1">1</option>
+        <option value="2">2</option>
+        <option value="3">3</option>
+    </select>
     <label for="weight">Weight:</label>
     <input type="number" id="weight" name="weight" />
     <label for="miss-make">Make:</label>
-    <input list="miss-makelist" id="miss-make" name="miss-make" />
-    <datalist id="miss-makelist">
-        <option value="Make">
-        <option value="Miss">
-    </datalist>
+    <select name="miss-make" id="miss-makelist">
+        <option value="Make">Make</option>
+        <option value="Miss">Miss</option>
+    </select>
     <button type="submit">Update</button>
 </form>
 
