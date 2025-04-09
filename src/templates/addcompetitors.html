@@ -1,6 +1,10 @@
 {% extends 'base.html' %}
 {% block content %}
 <h2>Enter Competitor Details</h2>
-{% load crispy_forms_tags %}
-{% crispy form form.helper %}
+<form action="" method="POST">
+    {% csrf_token %}
+    {{ form.as_div }}
+    <input type="submit" name="add" value="Add" />
+</form>
+
 {% endblock %}

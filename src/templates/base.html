@@ -1,22 +1,22 @@
 <!DOCTYPE html>
 <html>
 {% load static %}
-<link rel="stylesheet" href="{% static 'bootstrap.min.css' %}">
+<link rel="stylesheet" href="{% static 'mystyle.css' %}">
 <head>
     <title></title>
 </head>
 <body>
-    <div class="container">
-        <header class="d-flex justify-content-center py-3">
-          <ul class="nav nav-pills">
-            <li class="nav-item"><a href=".." class="nav-link">Home</a></li>
-            <li class="nav-item"><a href="viewcompetitors" class="nav-link">View</a></li>
-            <li class="nav-item"><a href="addcompetitors" class="nav-link">Add</a></li>
-            <li class="nav-item"><a href="competition" class="nav-link">Competition</a></li>
+      <header>
+        <nav>
+          <ul>
+            <li ><a href="..">Home</a></li>
+            <li><a href="viewcompetitors">View</a></li>
+            <li><a href="addcompetitors">Add</a></li>
+            <li><a href="competition">Competition</a></li>
           </ul>
-        </header>
-      </div>
-    {% block content %}
-    {% endblock %}
+        </nav>
+      </header>
+  {% block content %}
+  {% endblock %}
 </body>
 </html>

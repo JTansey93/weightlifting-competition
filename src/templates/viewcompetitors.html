@@ -22,7 +22,7 @@
             <form action="" method="POST">
                 {% csrf_token %}
                 <input type="hidden" value="{{ object.pk }}" name="pk">
-                <input class="btn btn-default btn-danger" name="delete" type="submit" value="Delete"/>
+                <input name="delete" type="submit" value="Delete"/>
               </form>
         </td>
     </tr>
