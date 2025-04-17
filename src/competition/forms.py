@@ -1,16 +1,7 @@
 from django import forms
 from .models import Competitor
-from crispy_forms.helper import FormHelper
-from crispy_forms.layout import Submit
 
 class CompetitorForm(forms.ModelForm):
-    def __init__(self, *args, **kwargs):
-        super(CompetitorForm, self).__init__(*args, **kwargs)
-        self.helper = FormHelper(self)
-        self.helper.form_id = 'id-CompetitorForm'
-        self.helper.form_class = 'CompetitorForm'
-        self.helper.form_method = 'post'
-        self.helper.add_input(Submit('submit', 'Add'))
 
     class Meta:
         model = Competitor
